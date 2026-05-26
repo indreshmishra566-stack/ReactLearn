@@ -1,5 +1,6 @@
 import CodeBlock from "./CodeBlock";
 import CommandTable from "./CommandTable";
+import SupportCard from "./SupportCard";
 import TheoryBlock from "./TheoryBlock";
 
 function QuizBlock({ questions, answers, onAnswer }) {
@@ -201,6 +202,8 @@ export default function ChapterView({
           Next →
         </button>
       </div>
+
+      <SupportCard />
     </main>
   );
 }
