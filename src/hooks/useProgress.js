@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import {
-  buildProgressBackup,
   countCompleted,
   normalizeProgress,
-  parseProgressBackup,
   PROGRESS_STORAGE_KEY,
 } from "../utils/progress";
 
@@ -69,12 +67,6 @@ export function useProgress(chapters) {
 
   const resetProgress = () => setProgress(normalizeProgress());
 
-  const exportProgress = () => buildProgressBackup(progress);
-  const importProgress = (text) => {
-    const imported = parseProgressBackup(text);
-    setProgress(imported);
-  };
-
   const completedCount = countCompleted(progress.completed);
   const percentage = Math.round((completedCount / chapters.length) * 100);
 
@@ -85,8 +77,6 @@ export function useProgress(chapters) {
     toggleExercise,
     answerQuiz,
     resetProgress,
-    exportProgress,
-    importProgress,
     completedCount,
     percentage,
   };

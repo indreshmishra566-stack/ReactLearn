@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 function searchableText(chapter) {
   return [
@@ -31,13 +31,9 @@ export default function Sidebar({
   completedCount,
   percentage,
   onResetProgress,
-  onExportProgress,
-  onImportProgress,
   sidebarOpen,
 }) {
   const [search, setSearch] = useState("");
-  const [backupMessage, setBackupMessage] = useState("");
-  const importInputRef = useRef(null);
   const query = search.trim().toLowerCase();
 
   const filtered = query
@@ -45,35 +41,6 @@ export default function Sidebar({
     : chapters;
   const nextChapter =
     chapters.find((chapter) => !progress.completed[chapter.id]) || chapters[chapters.length - 1];
-
-  const handleExport = () => {
-    const backup = onExportProgress();
-    const blob = new Blob([JSON.stringify(backup, null, 2)], {
-      type: "application/json",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `react-learn-progress-${new Date().toISOString().slice(0, 10)}.json`;
-    link.click();
-    URL.revokeObjectURL(url);
-    setBackupMessage("Backup exported");
-  };
-
-  const handleImport = async (event) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    try {
-      const text = await file.text();
-      onImportProgress(text);
-      setBackupMessage("Backup imported");
-    } catch {
-      setBackupMessage("Import failed");
-    } finally {
-      event.target.value = "";
-    }
-  };
 
   return (
     <aside className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
@@ -109,26 +76,6 @@ export default function Sidebar({
             Reset
           </button>
         </div>
-        <div className="backup-actions" aria-live="polite">
-          <button className="progress-action" onClick={handleExport}>
-            Export
-          </button>
-          <button
-            className="progress-action"
-            onClick={() => importInputRef.current?.click()}
-          >
-            Import
-          </button>
-          <input
-            ref={importInputRef}
-            className="visually-hidden"
-            type="file"
-            accept="application/json,.json"
-            onChange={handleImport}
-            aria-label="Import progress backup"
-          />
-        </div>
-        {backupMessage && <div className="backup-message">{backupMessage}</div>}
       </div>
 
       {/* Search */}

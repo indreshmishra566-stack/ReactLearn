@@ -17,7 +17,6 @@ The goal is simple: make React understandable from the first idea to real-world 
 - Shareable chapter URLs like `/chapter/state-decisions`
 - Interactive quiz scoring and answer review
 - Saved exercise checklist progress
-- Progress export/import backups
 - Responsive Vite + React interface
 - Social preview image for sharing
 - Production build ready

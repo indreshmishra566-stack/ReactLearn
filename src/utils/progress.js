@@ -1,5 +1,4 @@
 export const PROGRESS_STORAGE_KEY = "react-learn-progress";
-export const BACKUP_VERSION = 1;
 
 export function createEmptyProgress() {
   return {
@@ -31,21 +30,6 @@ export function normalizeProgress(value) {
     quizAnswers:
       value.quizAnswers && typeof value.quizAnswers === "object" ? value.quizAnswers : {},
   };
-}
-
-export function buildProgressBackup(progress) {
-  return {
-    app: "react-learn",
-    version: BACKUP_VERSION,
-    exportedAt: new Date().toISOString(),
-    progress: normalizeProgress(progress),
-  };
-}
-
-export function parseProgressBackup(text) {
-  const parsed = JSON.parse(text);
-  const source = parsed?.progress || parsed;
-  return normalizeProgress(source);
 }
 
 export function countCompleted(completed) {

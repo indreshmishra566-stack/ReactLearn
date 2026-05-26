@@ -1,11 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {
-  buildProgressBackup,
-  countCompleted,
-  normalizeProgress,
-  parseProgressBackup,
-} from "./progress.js";
+import { countCompleted, normalizeProgress } from "./progress.js";
 
 test("normalizes legacy completion-only progress", () => {
   assert.deepEqual(normalizeProgress({ intro: true, forms: false }), {
@@ -24,18 +19,6 @@ test("preserves saved exercises and quiz answers", () => {
 
   assert.equal(progress.exercises.intro[0], true);
   assert.equal(progress.quizAnswers.intro[0], 2);
-});
-
-test("parses exported backups", () => {
-  const backup = buildProgressBackup({
-    completed: { intro: true },
-    exercises: {},
-    quizAnswers: {},
-  });
-
-  assert.deepEqual(parseProgressBackup(JSON.stringify(backup)).completed, {
-    intro: true,
-  });
 });
 
 test("counts completed chapters only", () => {

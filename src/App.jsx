@@ -26,8 +26,6 @@ export default function App() {
     toggleExercise,
     answerQuiz,
     resetProgress,
-    exportProgress,
-    importProgress,
     completedCount,
     percentage,
   } = useProgress(chapters);
@@ -88,8 +86,6 @@ export default function App() {
         completedCount={completedCount}
         percentage={percentage}
         onResetProgress={handleResetProgress}
-        onExportProgress={exportProgress}
-        onImportProgress={importProgress}
         sidebarOpen={sidebarOpen}
       />
       <div className="main-area" ref={contentRef}>
