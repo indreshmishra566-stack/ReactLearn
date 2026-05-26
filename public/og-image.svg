@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">React Learn</title>
+  <desc id="desc">Complete React course preview image</desc>
+  <rect width="1200" height="630" fill="#080810"/>
+  <rect x="64" y="64" width="1072" height="502" rx="28" fill="#13131f" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <circle cx="158" cy="154" r="44" fill="#00d4ff" opacity="0.16"/>
+  <text x="126" y="170" fill="#67e8f9" font-family="Arial, sans-serif" font-size="52" font-weight="700">⚛</text>
+  <text x="224" y="162" fill="#ffffff" font-family="Arial, sans-serif" font-size="58" font-weight="800">React Learn</text>
+  <text x="224" y="218" fill="#9b9bc7" font-family="Arial, sans-serif" font-size="28">Complete React course with theory, code, commands, quizzes, and projects</text>
+  <g font-family="Arial, sans-serif" font-size="24" font-weight="700">
+    <rect x="126" y="302" width="206" height="58" rx="16" fill="#0e7490" opacity="0.28"/>
+    <text x="154" y="339" fill="#67e8f9">Components</text>
+    <rect x="356" y="302" width="142" height="58" rx="16" fill="#16a34a" opacity="0.24"/>
+    <text x="384" y="339" fill="#86efac">State</text>
+    <rect x="522" y="302" width="136" height="58" rx="16" fill="#9333ea" opacity="0.26"/>
+    <text x="550" y="339" fill="#d8b4fe">Hooks</text>
+    <rect x="682" y="302" width="152" height="58" rx="16" fill="#ea580c" opacity="0.24"/>
+    <text x="710" y="339" fill="#fdba74">Forms</text>
+    <rect x="858" y="302" width="152" height="58" rx="16" fill="#2563eb" opacity="0.28"/>
+    <text x="886" y="339" fill="#93c5fd">Deploy</text>
+  </g>
+  <text x="126" y="450" fill="#ddddf0" font-family="Arial, sans-serif" font-size="34" font-weight="700">Built for learners who want nothing skipped.</text>
+  <text x="126" y="500" fill="#6868a0" font-family="Arial, sans-serif" font-size="24">38 chapters • progress tracking • troubleshooting • final project</text>
+</svg>
