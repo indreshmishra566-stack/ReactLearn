@@ -6,7 +6,7 @@ export default function SupportCard() {
   return (
     <section className="support-card" aria-labelledby="support-title">
       <div className="support-copy">
-        <span className="support-kicker">Made with love</span>
+        <span className="support-kicker">Hey!</span>
         <h2 id="support-title">Want to support this course?</h2>
         <p>
           If React Learn helped you, you can scan the UPI QR and pay any amount.
