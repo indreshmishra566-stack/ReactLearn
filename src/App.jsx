@@ -25,7 +25,6 @@ export default function App() {
     markUndone,
     toggleExercise,
     answerQuiz,
-    resetProgress,
     completedCount,
     percentage,
   } = useProgress(chapters);
@@ -69,13 +68,6 @@ export default function App() {
     return () => window.removeEventListener("popstate", syncFromUrl);
   }, []);
 
-  const handleResetProgress = () => {
-    const confirmed = window.confirm(
-      "Reset all completed chapters, exercise checks, and quiz answers?"
-    );
-    if (confirmed) resetProgress();
-  };
-
   return (
     <div className="app">
       <Sidebar
@@ -85,7 +77,6 @@ export default function App() {
         progress={progress}
         completedCount={completedCount}
         percentage={percentage}
-        onResetProgress={handleResetProgress}
         sidebarOpen={sidebarOpen}
       />
       <div className="main-area" ref={contentRef}>

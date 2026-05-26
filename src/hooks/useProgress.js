@@ -65,8 +65,6 @@ export function useProgress(chapters) {
     }));
   };
 
-  const resetProgress = () => setProgress(normalizeProgress());
-
   const completedCount = countCompleted(progress.completed);
   const percentage = Math.round((completedCount / chapters.length) * 100);
 
@@ -76,7 +74,6 @@ export function useProgress(chapters) {
     markUndone,
     toggleExercise,
     answerQuiz,
-    resetProgress,
     completedCount,
     percentage,
   };

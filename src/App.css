@@ -47,10 +47,6 @@ button:focus-visible, input:focus-visible, summary:focus-visible {
 .progress-bar-bg { height: 5px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
 .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #22c55e, #00d4ff); border-radius: 99px; transition: width 0.5s ease; }
 .progress-pct { font-size: 10px; color: var(--muted); margin-top: 6px; }
-.progress-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-.progress-action { border: 1px solid var(--border2); background: var(--card2); color: var(--text); border-radius: 7px; padding: 7px 8px; font-family: inherit; font-size: 11px; cursor: pointer; }
-.progress-action:hover { border-color: rgba(255,255,255,0.22); }
-.progress-action.danger { color: #fca5a5; }
 
 .search-wrap { padding: 12px 16px 8px; }
 .search-input { width: 100%; background: var(--card); border: 1px solid var(--border2); border-radius: 8px; padding: 8px 12px; color: var(--text); font-size: 12px; font-family: inherit; outline: none; transition: border-color 0.2s; }

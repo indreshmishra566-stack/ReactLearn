@@ -30,7 +30,6 @@ export default function Sidebar({
   progress,
   completedCount,
   percentage,
-  onResetProgress,
   sidebarOpen,
 }) {
   const [search, setSearch] = useState("");
@@ -39,8 +38,6 @@ export default function Sidebar({
   const filtered = query
     ? chapters.filter((chapter) => searchableText(chapter).includes(query))
     : chapters;
-  const nextChapter =
-    chapters.find((chapter) => !progress.completed[chapter.id]) || chapters[chapters.length - 1];
 
   return (
     <aside className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
@@ -68,14 +65,6 @@ export default function Sidebar({
           />
         </div>
         <div className="progress-pct">{percentage}% complete</div>
-        <div className="progress-actions">
-          <button className="progress-action" onClick={() => onSelect(nextChapter.id)}>
-            Continue
-          </button>
-          <button className="progress-action danger" onClick={onResetProgress}>
-            Reset
-          </button>
-        </div>
       </div>
 
       {/* Search */}

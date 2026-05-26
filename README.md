@@ -12,7 +12,6 @@ The goal is simple: make React understandable from the first idea to real-world 
 - Quizzes and exercise checkpoints for every chapter
 - Step-by-step final project guidance
 - Progress tracking with `localStorage`
-- Continue and reset progress controls
 - Topic tags and full-content search
 - Shareable chapter URLs like `/chapter/state-decisions`
 - Interactive quiz scoring and answer review
