@@ -26,6 +26,7 @@ button:focus-visible, input:focus-visible, summary:focus-visible {
 .app { display: flex; height: 100vh; overflow: hidden; }
 .main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
 .content-scroll { flex: 1; overflow-y: auto; scroll-behavior: smooth; }
+.sidebar-backdrop { display: none; }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -184,35 +185,69 @@ pre { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; li
 
 @media (max-width: 768px) {
   :root { --sidebar-w: min(86vw, 320px); --topbar-h: 56px; }
-  .sidebar { position: absolute; z-index: 100; height: 100%; box-shadow: 18px 0 40px rgba(0,0,0,0.32); }
-  .chapter-view { padding: 20px 16px 50px; }
-  .chapter-hero { align-items: flex-start; gap: 14px; padding: 20px; border-radius: 14px; }
-  .hero-title { font-size: 22px; }
+  .app { position: relative; }
+  .sidebar { position: absolute; z-index: 100; height: 100%; max-width: 100vw; box-shadow: 18px 0 40px rgba(0,0,0,0.42); }
+  .sidebar.closed { box-shadow: none; }
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 90; border: 0; background: rgba(0,0,0,0.5); cursor: pointer; }
+  .sidebar-brand { padding: 20px 18px 16px; }
+  .brand-name { font-size: 16px; }
+  .progress-card { margin-inline: 14px; }
+  .chapter-nav { padding-inline: 8px; }
+  .chapter-btn { min-height: 54px; }
+  .main-area { width: 100%; }
+  .chapter-view { width: 100%; padding: 18px 14px 46px; }
+  .chapter-hero { align-items: flex-start; gap: 14px; padding: 18px; border-radius: 14px; margin-bottom: 18px; }
+  .hero-title { font-size: 22px; line-height: 1.15; overflow-wrap: anywhere; }
   .hero-icon { font-size: 36px; }
-  .section-card { padding: 18px 16px; border-radius: 12px; }
+  .hero-tags { gap: 5px; margin-top: 10px; }
+  .hero-tags span { font-size: 10px; padding: 3px 7px; }
+  .section-card { padding: 18px 15px; border-radius: 12px; margin-bottom: 16px; }
   .section-header { align-items: flex-start; }
+  .section-title { font-size: 16px; line-height: 1.25; min-width: 0; }
   .section-badge { margin-top: 1px; }
-  .chapter-footer { display: grid; grid-template-columns: 1fr 1fr; }
+  .theory-para { font-size: 13.5px; line-height: 1.75; }
+  .chapter-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 24px; }
   .complete-area { grid-column: 1 / -1; order: -1; }
   .nav-btn, .complete-btn, .done-badge { width: 100%; padding-left: 12px; padding-right: 12px; }
   .cmd-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start; }
   .cmd-code { white-space: normal; overflow-wrap: anywhere; grid-column: 1 / -1; }
   .cmd-desc { line-height: 1.45; }
+  .quiz-item summary { font-size: 13.5px; }
+  .quiz-number { margin-right: 6px; }
+  .quiz-option { font-size: 13px; }
+  .exercise-item { grid-template-columns: 18px 22px 1fr; gap: 8px; font-size: 13.5px; }
+  .project-step { grid-template-columns: 30px 1fr; gap: 10px; }
+  .project-step p { font-size: 13.5px; }
   .code-scroll { padding: 14px 12px; }
   pre { font-size: 11.5px; }
   .line-num { min-width: 26px; padding-right: 12px; }
-  .topbar { padding: 0 14px; }
-  .topbar-title { max-width: 46vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .support-card { grid-template-columns: 1fr; }
-  .support-qr-wrap { justify-self: stretch; width: 100%; max-width: 240px; }
+  .topbar { padding: 0 14px; gap: 10px; }
+  .sidebar-toggle { min-width: 40px; min-height: 38px; padding: 7px 10px; }
+  .topbar-info { min-width: 0; }
+  .topbar-title { max-width: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .topbar-counter { flex-shrink: 0; }
+  .support-card { grid-template-columns: 1fr; gap: 18px; padding: 18px 16px; margin-top: 18px; }
+  .support-copy p { max-width: none; font-size: 13.5px; }
+  .support-qr-wrap { justify-self: center; width: min(100%, 240px); }
 }
 
 @media (max-width: 480px) {
-  .chapter-view { padding-left: 12px; padding-right: 12px; }
-  .chapter-hero { flex-direction: column; }
+  :root { --sidebar-w: min(90vw, 320px); }
+  .topbar { padding-inline: 10px; }
+  .topbar-icon { display: none; }
+  .topbar-title { font-size: 14px; }
+  .chapter-view { padding-left: 10px; padding-right: 10px; }
+  .chapter-hero { flex-direction: column; padding: 16px; }
   .section-header { flex-wrap: wrap; }
   .section-title { flex-basis: 100%; order: 2; }
   .section-badge { order: 3; }
-  .project-step, .exercise-item { grid-template-columns: 1fr; }
+  .section-accent { height: 18px; }
+  .project-step { grid-template-columns: 1fr; }
+  .project-step span { width: 26px; height: 26px; }
+  .exercise-item { grid-template-columns: 18px 1fr; }
   .exercise-index { display: none; }
+  .quiz-number { width: 20px; height: 20px; }
+  .cmd-row { padding: 11px 12px; }
+  .support-kicker { font-size: 10px; }
+  .support-copy h2 { font-size: 18px; line-height: 1.25; }
 }

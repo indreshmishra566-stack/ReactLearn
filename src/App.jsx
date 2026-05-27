@@ -18,7 +18,9 @@ function getInitialChapterId() {
 
 export default function App() {
   const [activeId, setActiveId] = useState(getInitialChapterId);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => !window.matchMedia("(max-width: 768px)").matches
+  );
   const {
     progress,
     markDone,
@@ -68,8 +70,18 @@ export default function App() {
     return () => window.removeEventListener("popstate", syncFromUrl);
   }, []);
 
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const syncSidebar = (event) => {
+      setSidebarOpen(!event.matches);
+    };
+
+    media.addEventListener("change", syncSidebar);
+    return () => media.removeEventListener("change", syncSidebar);
+  }, []);
+
   return (
-    <div className="app">
+    <div className={`app ${sidebarOpen ? "sidebar-is-open" : ""}`}>
       <Sidebar
         chapters={chapters}
         activeId={activeId}
@@ -79,14 +91,22 @@ export default function App() {
         percentage={percentage}
         sidebarOpen={sidebarOpen}
       />
-      <div className="main-area" ref={contentRef}>
+      {sidebarOpen && (
+        <button
+          className="sidebar-backdrop"
+          type="button"
+          aria-label="Close chapter sidebar"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      <div className="main-area">
         <Topbar
           chapter={chapter}
           chapterIndex={activeIndex}
           total={chapters.length}
           onToggleSidebar={() => setSidebarOpen((s) => !s)}
         />
-        <div className="content-scroll">
+        <div className="content-scroll" ref={contentRef}>
           <ChapterView
             chapter={chapter}
             chapterIndex={activeIndex}
